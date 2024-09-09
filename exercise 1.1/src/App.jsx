@@ -68,3 +68,7 @@ const square = p => {
   console.log(p)
   return p * p
 }
+
+const average = function(a, b) {
+  return (a + b) / 2
+}

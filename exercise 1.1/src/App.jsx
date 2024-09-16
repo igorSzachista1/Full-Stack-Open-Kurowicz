@@ -1,74 +1,37 @@
+import "./styles.css";
+import Header from "./Header";
+import Content from "./Content";
+import Total from "./Total";
+
 const App = () => {
-  const course = 'Half Stack application development'
-  const part1 = 'Fundamentals of React'
-  const exercises1 = 10
-  const part2 = 'Using props to pass data'
-  const exercises2 = 7
-  const part3 = 'State of a component'
-  const exercises3 = 14
+  const course = `Half Stack application development`;
+  // intialized empty array for parts to be stored and accessed
+  const partsArray = [];
+
+  const parts = [
+    { part: "Fundamentals of React", exercise: 10, id: 1 },
+    { part: "Using props to pass data", exercise: 7, id: 2 },
+    { part: "State of a component", exercise: 14, id: 3 }
+  ];
+  parts.filter((item) =>
+    item.exercise ? partsArray.push(item.exercise) : console.log("nope")
+  );
 
   return (
-    <div>
-      <h1>{course}</h1>
-      <p>
-        {part1} {exercises1}
-      </p>
-      <p>
-        {part2} {exercises2}
-      </p>
-      <p>
-        {part3} {exercises3}
-      </p>
-      <p>Number of exercises {exercises1 + exercises2 + exercises3}</p>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+        flexWrap: "wrap",
+        justifyContent: "center"
+      }}
+    >
+      <Header course={course} />
+      <Content parts={parts} />
+      <Total partsArray={partsArray} />
     </div>
-  )
-}
+  );
+};
 
-export default App
-
-const object1 = {
-  name: 'Arto Hellas',
-  age: 35,
-  education: 'PhD',
-}
-
-const object2 = {
-  name: 'Full Stack web application development',
-  level: 'intermediate studies',
-  size: 5,
-}
-
-const object3 = {
-  name: {
-    first: 'Dan',
-    last: 'Abramov',
-  },
-  grades: [2, 3, 5, 3],
-  department: 'Stanford University',
-}
-
-console.log(object1.name)         // Arto Hellas is printed
-const fieldName = 'age'
-console.log(object1[fieldName])    // 35 is printed
-
-
-object1.address = 'Helsinki'
-object1['secret number'] = 12341
-
-const sum = (p1, p2) => {
-  console.log(p1)
-  console.log(p2)
-  return p1 + p2
-}
-
-const result = sum(1, 5)
-console.log(result)
-
-const square = p => {
-  console.log(p)
-  return p * p
-}
-
-const average = function(a, b) {
-  return (a + b) / 2
-}
+export default App;
